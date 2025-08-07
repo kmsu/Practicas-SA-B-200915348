@@ -63,7 +63,16 @@ def agregar_producto(listaProductos):
     print("Producto agregado correctamente")
 
 def eliminar_producto(listaProductos):
-    print("eliminar producto")
+    # Ingresar el nombre del producto a eliminar
+    nombre = input("Ingrese el nombre del producto a eliminar: ").strip()
+
+    for producto in listaProductos:
+        if producto.nombre.lower() == nombre.lower():
+            listaProductos.remove(producto)
+            print("Producto ", nombre, " eliminado correctamente.")
+            return
+    #Si no encontro nada en el for llega hasta aqui
+    print("Producto no encontrado.")
 
 def mostrar_productos(listaProductos):
     #Validar si la lista (inventario) esta vacio
