@@ -83,13 +83,11 @@ Es decir, cuando un cliente depende de una clase que implementa una interfaz cuy
 ```python
 class BuscadorPorNombre:
     def buscar_por_nombre(self, productos, nombre):
-        # Devuelve el primer producto que tenga el mismo nombre exacto
         return next((producto for producto in productos if producto.nombre == nombre), None)
 
 
 class BuscadorPorPrecio:
     def buscar_por_precio(self, productos, precio):
-        # Devuelve todos los productos que tengan el precio exacto
         return [producto for producto in productos if producto.precio == precio]
 ```
 
