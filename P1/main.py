@@ -95,7 +95,31 @@ def ordenar_productos(listaProductos):
     print("ordenar producto")
 
 def buscar_producto(listaProductos):
-    print("buscar producto")
+    productoExacto = None
+    productosParciales = []
+
+    # Ingresar el nombre del producto a buscar
+    nombre = input("\n Ingrese el nombre del producto a buscar: ").strip()
+    nombreLower = nombre.lower()
+
+    # busca coincidencia exacta
+    for producto in listaProductos:
+        productoLower = producto.nombre.lower()
+        if productoLower == nombreLower:
+            productoExacto = producto
+            break
+        elif nombreLower in productoLower:
+            productosParciales.append(producto)
+
+    if productoExacto:
+        print(f"\n Producto encontrado:")
+        print(f"Nombre: {producto.nombre} | Cantidad: {producto.cantidad} | Precio: Q{producto.precio:.2f}")
+    elif productosParciales:
+        print(f"\n Productos encontrados que contienen '{nombre}':")
+        for p in productosParciales:
+            print(f"Nombre: {p.nombre} | Cantidad: {p.cantidad} | Precio: Q{p.precio:.2f}")
+    else:
+        print("\n Producto no encontrado.")
 
 def mostrar_menu():
     # Menu a mostrar con sus respectivas opciones
