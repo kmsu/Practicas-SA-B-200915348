@@ -92,7 +92,46 @@ def mostrar_productos(listaProductos):
         print(f"{id}. Nombre: {producto.nombre} | Cantidad: {producto.cantidad} | Precio: Q{producto.precio:.2f}")
 
 def ordenar_productos(listaProductos):
-    print("ordenar producto")
+    #Validar si el inventario esta vacio
+    if not listaProductos:
+        print("📭 No hay productos en el inventario.")
+        return
+    
+    print("\n¿Ordenar por?")
+    print("1. Precio")
+    print("2. Cantidad")
+    opcion = input("Seleccione una opción (1-2): ")
+
+    # Evita hacer algun proceso si hubo un error al elegir opcion
+    if opcion == "1" or opcion == "2":
+        print("\n¿Tipo de ordenamiento?")
+        print("1. Ascendente")
+        print("2. Descendente")
+        orden = input("Seleccione una opción (1-2): ")
+
+        # Establecer el valor del argumento que determina el tipo de ordenamiento para la funcion sorted()
+        valorReverse = False
+        if orden == "1":
+            valorReverse = False  # Ascendente
+        elif orden == "2":
+            valorReverse = True   # Descendente
+        else:
+            print("Opción inválida para el orden.")
+            return
+        
+        if opcion == "1":
+            productosOrdenados = sorted(listaProductos, key=lambda x: x.precio, reverse=valorReverse)
+        else:
+            productosOrdenados = sorted(listaProductos, key=lambda x: x.cantidad, reverse=valorReverse)
+
+        # Mostrar resultados ordenados
+        print("")
+        for i, producto in enumerate(productosOrdenados, start=1):
+            print(f"{i}. Nombre: {producto.nombre} | Cantidad: {producto.cantidad} | Precio: Q{producto.precio:.2f}")
+    else:
+        print("Opción invalida")
+        return
+
 
 def buscar_producto(listaProductos):
     productoExacto = None
