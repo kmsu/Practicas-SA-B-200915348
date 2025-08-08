@@ -49,12 +49,19 @@ def agregar_producto(listaProductos):
             print("El producto ya existe")
             return
     
-    # Ingresar la cantidad y el precio y convertirlo en un valor numerico
+    # Ingresar y Validar cantidad
     try:
         cantidad = int(input("Ingrese la cantidad: "))
+    except ValueError:
+        print("La cantidad debe ser un número entero.")
+        return
+
+    # Ingresar y Validar precio
+    try:
         precio = float(input("Ingrese el precio: "))
     except ValueError:
-        print("Entrada invalida. Cantidad debe ser entero y precio debe ser decimal.")
+        print("El precio debe ser un número decimal.")
+        return
     
     #Crear el producto
     nuevoProducto = Producto(nombre, cantidad, precio)
